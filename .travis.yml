@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+  - "node"
 
 sudo: true
 dist: trusty
@@ -10,9 +10,13 @@ branches:
     - travisci    #Master only builds for prod. For now changing it to Travis CI Branch
                   #dev branch push will triger build for non prod deployment
 
-before_script:
-  # - npm install -g firebase-tools
-  - npm install
+# before_script:
+#   # - npm install -g firebase-tools
+#   - npm install
+
+install:
+  - npm i -g npm@5.7.1 # this should be deleted once 5.7.X is out of "pre-release"
+  - npm ci             # instead of default npm install 
 
 script:
   - ng build --prod
